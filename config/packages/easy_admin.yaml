@@ -4,6 +4,6 @@ easy_admin:
       Record:
         class: App\Entity\Record
         list:
-          actions: ['import users']
+          actions: ['importUsers']
 #        - App\Entity\Category
 #        - App\Entity\User

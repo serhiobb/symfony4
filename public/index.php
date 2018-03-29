@@ -4,6 +4,7 @@ use App\Kernel;
 use Symfony\Component\Debug\Debug;
 use Symfony\Component\Dotenv\Dotenv;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 require __DIR__.'/../vendor/autoload.php';
 
@@ -34,6 +35,17 @@ if ($trustedHosts = $_SERVER['TRUSTED_HOSTS'] ?? false) {
 
 $kernel = new Kernel($env, $debug);
 $request = Request::createFromGlobals();
-$response = $kernel->handle($request);
-$response->send();
+
+try {
+    $response = $kernel->handle($request);
+}
+catch ( Symfony\Component\Routing\Exception\ResourceNotFoundException $e ) {
+    $response = new Response($e->getCode() ." ". $e->getMessage(), 500);
+    $response->send();
+} finally {
+    $response->send();
+}
+
 $kernel->terminate($request, $response);
+
+

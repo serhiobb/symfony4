@@ -8,9 +8,14 @@
     <body>
         {% block body %}
             <div>
+                <form action="/add-record" type="get">
+                    <input type="submit">
+                    <input placeholder="name" type="text" name="name">
+                    <input placeholder="phone" type="phone" name="phone">
+                </form>
                 <ul>
                     {% for record in records %}
-                        <li>{{record.name}}: {{record.phone}}</li>
+                        <li>{{record.name}}: {{record.phone|phone_number_format('NATIONAL')}}</li>
                     {% endfor %}
                 </ul>
             </div>

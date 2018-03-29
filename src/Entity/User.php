@@ -18,5 +18,16 @@ use FOS\UserBundle\Model\User as FOSUser;
  * @ORM\Table(name="user")
  */
 class User extends FOSUser {
+    
+    /**
+     * @ORM\Id
+     * @ORM\GeneratedValue
+     * @ORM\Column(type="integer")
+     */
+    protected $id;
 
+    public function getId():integer 
+    {
+        return $this->id;
+    }
 }
