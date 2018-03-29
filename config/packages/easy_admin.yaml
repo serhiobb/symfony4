@@ -1,0 +1,9 @@
+easy_admin:
+    entities:
+#        # List the entity class name you want to manage
+      Record:
+        class: App\Entity\Record
+        list:
+          actions: ['import users']
+#        - App\Entity\Category
+#        - App\Entity\User

@@ -1,0 +1,13 @@
+fos_user:
+  db_driver: orm
+  user_class: App\Entity\User
+  firewall_name: main
+  # defaults
+  model_manager_name: null
+  use_authentication_listener: false
+  use_listener: false
+  use_flash_notifications: false
+  use_username_form_type: false
+  from_email:
+    address: "symfony@localhost"
+    sender_name: "Symfony Mailer"
